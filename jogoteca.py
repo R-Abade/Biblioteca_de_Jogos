@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from pickle import TRUE
+from flask import Flask, render_template, request
 
 
 class Game:
@@ -18,9 +19,24 @@ lista = [game0, game1, game2, game3]
 app = Flask(__name__)
 
 
-@app.route('/inicio')
+@app.route('/')
 def hi():
     return render_template('lista.html', titulo='Meus Jogos', jogos=lista)
 
+@app.route('/novo')
+def new():
+    return render_template('novo.html', titulo="Meus Jogos")
 
-app.run()
+@app.route('/criar', methods=['post',])
+def create():
+    nome = request.form['nome']
+    categoria = request.form['categoria']
+    console = request.form['console']
+    jogo = Game(nome, categoria, console)
+    lista.append(jogo)
+    return render_template('lista.html', titulo = "Jogos", jogos = lista)
+
+# Esse código é para quando for rodar no Replit
+#app.run(host='0.0.0.0', debug=True)
+
+app.run(debug=True)
