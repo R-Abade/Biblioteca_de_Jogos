@@ -1,4 +1,10 @@
 # Biblioteca_de_Jogos
+
+## Índice 
+* [Descrição](https://github.com/R-Abade/Biblioteca_de_Jogos#descri%C3%A7%C3%A3o-do-projeto)
+* [Ferramentas](https://github.com/R-Abade/Biblioteca_de_Jogos#ferramentas-utilizadas)
+* [Acesso ao Projeto](https://github.com/R-Abade/Biblioteca_de_Jogos#acesso-ao-projeto-e-download)
+* [Desenvolvedores](https://github.com/R-Abade/Biblioteca_de_Jogos#developers)
 <h2>Apresentação</h2>
 <p align='center'> Salve! Seja bem-vindo ao meu ReadMe sobre o programa de Biblioteca de Jogos!</p>
 
@@ -22,5 +28,5 @@ Espero aprender ainda mais sobre programação!
 <p> Teclas Ctrl + Alt + T -> git clone https://github.com/R-Abade/Biblioteca_de_Jogos.git</p>
 
 <h2>Developers</h2>
-<p><img src="https://user-images.githubusercontent.com/95872752/182689736-7d1543d3-d050-46c3-bfef-dae3a2429e11.jpg" border-radius= 25px; width=180px; height=180px;></p>
+<p><img src="https://user-images.githubusercontent.com/95872752/182689736-7d1543d3-d050-46c3-bfef-dae3a2429e11.jpg" border-radius=25px; width=200px; height=200px;></p>
 <details>Ele mesmo, o RAR_The_Plague, o Abade, A Kombi do EAD para os mais íntimos</details>
