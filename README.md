@@ -22,5 +22,5 @@ Espero aprender ainda mais sobre programação!
 <p> Teclas Ctrl + Alt + T -> git clone https://github.com/R-Abade/Biblioteca_de_Jogos.git</p>
 
 <h2>Developers</h2>
-![link para 41zrVpQP9JL](https://user-images.githubusercontent.com/95872752/182687596-0c01b60c-ae3d-4a13-a0b3-37f64ea28245.jpg)
+<p><img src="https://user-images.githubusercontent.com/95872752/182689736-7d1543d3-d050-46c3-bfef-dae3a2429e11.jpg" border-radius= 25px; width=180px; height=180px;></p>
 <details>Ele mesmo, o RAR_The_Plague, o Abade, A Kombi do EAD para os mais íntimos</details>
