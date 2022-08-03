@@ -1,10 +1,10 @@
 # Biblioteca_de_Jogos
 
 ## Índice 
-* [Descrição](https://github.com/R-Abade/Biblioteca_de_Jogos#descri%C3%A7%C3%A3o-do-projeto)
+* [Descrição](#descri%C3%A7%C3%A3o-do-projeto)
 * [Ferramentas](https://github.com/R-Abade/Biblioteca_de_Jogos#ferramentas-utilizadas)
 * [Acesso ao Projeto](https://github.com/R-Abade/Biblioteca_de_Jogos#acesso-ao-projeto-e-download)
-* [Desenvolvedores](https://github.com/R-Abade/Biblioteca_de_Jogos#developers)
+* [Desenvolvedores](#developers)
 <h2>Apresentação</h2>
 <p align='center'> Salve! Seja bem-vindo ao meu ReadMe sobre o programa de Biblioteca de Jogos!</p>
 
