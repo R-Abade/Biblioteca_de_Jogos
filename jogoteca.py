@@ -23,20 +23,23 @@ app = Flask(__name__)
 def hi():
     return render_template('lista.html', titulo='Meus Jogos', jogos=lista)
 
+
 @app.route('/novo')
 def new():
     return render_template('novo.html', titulo="Meus Jogos")
 
-@app.route('/criar', methods=['post',])
+
+@app.route('/criar', methods=['post', ])
 def create():
     nome = request.form['nome']
     categoria = request.form['categoria']
     console = request.form['console']
     jogo = Game(nome, categoria, console)
     lista.append(jogo)
-    return render_template('lista.html', titulo = "Jogos", jogos = lista)
+    return render_template('lista.html', titulo="Jogos", jogos=lista)
 
 # Esse código é para quando for rodar no Replit
 #app.run(host='0.0.0.0', debug=True)
+
 
 app.run(debug=True)
