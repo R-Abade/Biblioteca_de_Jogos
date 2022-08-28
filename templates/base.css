@@ -1,20 +1,33 @@
 .headers {
-    background: url('wallpaper2you_97630.gif');
-    width: 100%;
-    height: 250px;
+    display: inline;
+    background-color: black;
 }
 
-a,
-a:visited {
-    display: inline;
+h1 {
+    background-color: black;
+    color: whitesmoke;
+}
+
+nav {
+    background-color: #000000;
+}
+
+.links,
+.links:visited {
     font-size: large;
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
 }
 
-footer {
-    background: url('Chernobylite-4K-Wallpaper-1.jpg');
+footer>* {
+    align-items: center;
+    background-color: #000000;
+    color: whitesmoke;
+    display: inline;
     font-size: large;
+}
+
+img {
     width: 100%;
-    height: 100px;
+    height: 200px;
 }
