@@ -4,57 +4,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--<link href="base.css" rel="stylesheet">-->
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/base.css') }}">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <title>Biblioteca dos Jogos Nice dms</title>
     </head>
 
-    <style>
-        body {
-            background: linear-gradient(45deg, gray, purple);
-        }
-
-        .headers {
-            background-color: black;
-        }
-
-        h1 {
-            background-color: black;
-            color: whitesmoke;
-        }
-
-        nav {
-            background-color: #000000;
-        }
-
-        .links,
-        .links:visited {
-            font-size: large;
-            color: whitesmoke;
-            text-decoration: none;
-        }
-
-        footer>* {
-            background-color: #000000;
-            color: whitesmoke;
-            align-items: center;
-            justify-items: center;
-            justify-content: center;
-            font-size: large;
-        }
-
-        img {
-            width: 100%;
-            height: 200px;
-        }
-    </style>
-
     <body>
         <header>
             <div class="headers">
                 <h1>JOGOTECA</h1>
-                <img src="./images/white.jpg">
                 <nav>
                     <ul>
                         <li><a class="links" href="/">Lista de Jogos</a></li>
@@ -67,10 +28,12 @@
 
         {% block conteudo %}{% endblock %}
 
+    </body>
 
-        <footer>
-            <div>
-                <img src="./images/ghost.png">
-                Created by: Raphael Abade
-            </div>
-        </footer>
+    <footer>
+        <div>
+            Created by: Raphael Abade
+        </div>
+    </footer>
+
+</html>
