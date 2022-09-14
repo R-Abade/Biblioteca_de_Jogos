@@ -15,7 +15,17 @@
     <body>
         <header>
             <div class="headers">
+                {% if 'usuario_nome' in session %}
+                <form action="{{ url_for('logout') }}" method="post">
+                    <div>Olá, {{ session['usuario_nome'] }}!</div>
+                    <button class="btn btn-link">Sair</button>
+                </form>
+                {% else %}
+                <div><a href="{{ url_for('login') }}"></a>
+                    {% endif %}
+                </div>
                 <h1>JOGOTECA</h1>
+                {% with mensagens = get_flashed_}
                 <nav>
                     <ul>
                         <li><a class="links" href="/">Lista de Jogos</a></li>
