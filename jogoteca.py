@@ -1,6 +1,8 @@
+from os import abort
 from pickle import TRUE
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 
+#import usuarios
 
 class Game:
     def __init__(self, nome, categoria, video_game):
@@ -17,18 +19,18 @@ game3 = Game('Batman Arkhan Knight', 'RPG', 'PS3/PS4 & XboxOne')
 lista = [game0, game1, game2, game3]
 
 class Usuario:
-    def_init_(self, nome, email, senha):
+    def __init__(self, nome, email, senha):
         self.nome = nome
         self.email = email
         self.senha = senha
 
-lista_usuarios = [
-    Usuario('Abade', raphaelabade10@gmail.com, '123')
-    Usuario('Diego', diegoplays@gmail.com, 'YameteKudasai')
+lista_usuarios = [ 
+    Usuario('Abade', 'raphaelabade10@gmail.com', '123'),
+    Usuario('Diego', 'diegoplays@gmail.com', 'YameteKudasai')
     ]
 
 dict_usuario = {
-    usuario.email usuario for usuario in lista_usuarios
+    usuario.email: usuario for usuario in lista_usuarios
 }
 
 def buscar(email, senha):
@@ -51,11 +53,17 @@ def hi():
 
 @app.route('/novo')
 def new():
+    if not usuario_logado:
+        abort(403)
+
     return render_template('novo.html', titulo="Meus Jogos")
 
 
 @app.route('/criar', methods=['post', ])
 def create():
+    if not usuario_logado:
+        abort(403)
+
     nome = request.form['nome']
     categoria = request.form['categoria']
     console = request.form['console']
@@ -87,6 +95,10 @@ def logout():
     session.pop('usuario_email', None)
     session.pop('usuario_nome', None)
     return redirect(url_for('index'))
+
+def usuario_logado():
+    return 'usuario_nome' in session
+
 
 
 app.run(debug=True)
