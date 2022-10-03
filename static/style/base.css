@@ -18,6 +18,13 @@ body {
     text-decoration: none;
 }
 
+.logar {
+    font-size: large;
+    color: black;
+    background: inherit;
+    border: none;
+}
+
 footer {
     background-image: url('/static/images/ghost.png');
     background-repeat: no-repeat;

@@ -1,8 +1,7 @@
-from os import abort
 from pickle import TRUE
-from flask import Flask, render_template, request, redirect, session, flash, url_for
+from flask import Flask, render_template, request, redirect, session, flash, url_for, abort, g
+import usuarios
 
-#import usuarios
 
 class Game:
     def __init__(self, nome, categoria, video_game):
@@ -18,50 +17,26 @@ game3 = Game('Batman Arkhan Knight', 'RPG', 'PS3/PS4 & XboxOne')
 
 lista = [game0, game1, game2, game3]
 
-class Usuario:
-    def __init__(self, nome, email, senha):
-        self.nome = nome
-        self.email = email
-        self.senha = senha
-
-lista_usuarios = [ 
-    Usuario('Abade', 'raphaelabade10@gmail.com', '123'),
-    Usuario('Diego', 'diegoplays@gmail.com', 'YameteKudasai')
-    ]
-
-dict_usuario = {
-    usuario.email: usuario for usuario in lista_usuarios
-}
-
-def buscar(email, senha):
-    usuario = dict_usuario.get(email)
-    if usuario != None and usuario.senha == senha:
-        return usuario
-    else:
-        return None
-
-
 app = Flask(__name__)
-
 app.secret_key = 'ifmg'
 
 
 @app.route('/')
-def hi():
+def index():
     return render_template('lista.html', titulo='Meus Jogos', jogos=lista)
 
 
 @app.route('/novo')
 def new():
-    if not usuario_logado:
+    if not usuario_logado():
         abort(403)
 
     return render_template('novo.html', titulo="Meus Jogos")
 
 
-@app.route('/criar', methods=['post', ])
+@app.route('/criar', methods=['POST', ])
 def create():
-    if not usuario_logado:
+    if not usuario_logado():
         abort(403)
 
     nome = request.form['nome']
@@ -69,10 +44,11 @@ def create():
     console = request.form['console']
     jogo = Game(nome, categoria, console)
     lista.append(jogo)
-    return render_template('lista.html', titulo="Jogos", jogos=lista)
+    return redirect(url_for('index'))
 
 # Esse código é para quando for rodar no Replit
 #app.run(host='0.0.0.0', debug=True)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -82,10 +58,10 @@ def login():
         usuario = usuarios.buscar(email, senha)
         if usuario is None:
             flash('Usuário/ Senha Inválidos.')
-    else:
-        session['usuario_email'] = usuario.email
-        session['usuario_nome'] = usuario.nome
-        return redirect(url_for('index'))
+        else:
+            session['usuario_email'] = usuario.email
+            session['usuario_nome'] = usuario.nome
+            return redirect(url_for('index'))
 
     return render_template('login.html')
 
@@ -96,9 +72,20 @@ def logout():
     session.pop('usuario_nome', None)
     return redirect(url_for('index'))
 
-def usuario_logado():
-    return 'usuario_nome' in session
 
+def usuario_logado():
+    return 'usuario_email' in session
+
+
+@app.errorhandler(403)
+def acesso_negado(erro):
+    return render_template('acesso_negado.html', titulo='Ops!'), 403
+
+
+@app.before_request
+def carregar_usuario():
+    if 'usuario_email' in session:
+        g.usuario = usuarios.buscar_por_email(session['usuario_email'])
 
 
 app.run(debug=True)

@@ -15,31 +15,34 @@
     <body>
         <header>
             <div class="headers">
-                {% if 'usuario_nome' in session %}
-                <form action="{{ url_for('logout') }}" method="post">
-                    <div>Olá, {{ session['usuario_nome'] }}!</div>
-                    <button class="btn btn-link">Sair</button>
-                </form>
-                {% else %}
-                <div><a href="{{ url_for('login') }}"></a>
-                    {% endif %}
-                </div>
+
                 <h1>JOGOTECA</h1>
                 {% with mensagens = get_flashed_messages() %}
-                    {% if mensagens %}
-                    <ul class="text-danger">
-                        {% for mensagem in mensagens %}
-                        <li>{{ mensagem }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+                {% if mensagens %}
+                <ul class="text-danger">
+                    {% for mensagem in mensagens %}
+                    <li>{{ mensagem }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 {% endwith %}
 
-
+                <div class="float-end text-end mr-1 text-light">
+                    {% if 'usuario_nome' in session %}
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <div class="logar">Olá, {{ session['usuario_nome'] }}!</div>
+                        <button class="logar">Sair</button>
+                    </form>
+                    {% else %}
+                    <div><a href="{{ url_for('login') }}" class="logar">Login</a></div>
+                    {% endif %}
+                </div>
                 <nav>
                     <ul>
                         <li><a class="links" href="/">Lista de Jogos</a></li>
+                        {% if 'usuario_nome' in session %}
                         <li><a class="links" href="/novo">Adicionar Novo Jogo</a></li>
+                        {% endif %}
                         <li><a class="links" href="https://github.com/R-Abade/R-Abade">Meu GitHub</a></li>
                     </ul>
                 </nav>
